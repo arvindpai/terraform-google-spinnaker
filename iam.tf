@@ -1,0 +1,61 @@
+# Copyright 2018 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+resource "google_service_account" "spinnaker" {
+  account_id = "spinnaker-halyard-${var.basename}"
+  project    = "${var.project}"
+}
+
+resource "google_service_account_key" "spinnaker_sa_key" {
+  service_account_id = "${google_service_account.spinnaker.email}"
+}
+
+resource "google_project_iam_member" "spinnaker_instanceAdmin" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/compute.instanceAdmin"
+  project = "${var.project}"
+}
+
+resource "google_project_iam_member" "spinnaker_networkAdmin" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/compute.networkAdmin"
+  project = "${var.project}"
+}
+
+resource "google_project_iam_member" "spinnaker_securityAdmin" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/compute.securityAdmin"
+  project = "${var.project}"
+}
+
+resource "google_project_iam_member" "spinnaker_compute_storageAdmin" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/compute.storageAdmin"
+  project = "${var.project}"
+}
+
+resource "google_project_iam_member" "spinnaker_storageAdmin" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/storage.admin"
+  project = "${var.project}"
+}
+
+# Needed for all infra roles. @TODO determine how to trim this down
+resource "google_project_iam_member" "spinnaker_project_owner" {
+  member  = "serviceAccount:${google_service_account.spinnaker.email}"
+  role    = "roles/owner"
+  project = "${var.project}"
+}
+
+
