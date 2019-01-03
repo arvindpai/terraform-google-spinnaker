@@ -37,11 +37,6 @@ resource "google_compute_instance" "spinnaker" {
     hostname = "spkr-gce-${var.basename}"
   }
 
-
-
-//  provisioner "local-exec" {
-//    command = "sleep 120; ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${var.gce_ssh_user} '${google_compute_instance.spinnaker.network_interface.0.access_config.0.assigned_nat_ip},' scripts/spinnaker/tests/test.yml"
-//  }
   service_account {
     //email = ""
     scopes = ["userinfo-email", "compute-ro", "storage-rw"]

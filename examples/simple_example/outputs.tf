@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-//output "forseti-client-vm-name" {
-//  value = "${module.forseti-install-simple.forseti-client-vm-name}"
-//}
+output "spinnaker-vm-name" {
+  value = "${module.spinnaker.spinnaker_instance_name}"
+}
 //
 //output "forseti-client-vm-ip" {
 //  value = "${module.forseti-install-simple.forseti-client-vm-ip}"
