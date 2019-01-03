@@ -3,6 +3,9 @@ A Cloud Foundation Toolkit Module: Opinionated Google Cloud Platform project cre
 
 # Pre-reqs
 
+- Google Cloud SDK (gcloud / gsutil)
+- terraform
+- test-kitchen
 
 # Sample Module Configuration
 
@@ -55,3 +58,17 @@ module "spinnaker" {
 | spinnaker\_instance\_name | - |
 | spinnaker\_service\_account | - |
 | spinnaker\_service\_account\_key | - |
+
+
+# Validating the Spinnaker Installation
+
+** The full provisioning process of Spinnaker takes roughly 15 minutes **
+
+## Interesting log file locations
+
+- Bootstrapping log file location `/var/log/startup-script.log`
+- Spinnaker Logs `/var/log/spinnaker`
+
+## Accessing Spinnaker
+
+URL = http://spkr-gce.{environment}.{dns_suffix}
