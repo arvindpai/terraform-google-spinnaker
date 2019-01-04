@@ -3,7 +3,7 @@ Ansible role for installing and configuring Netflix's Spinnaker via Halyard on G
 
 #### Prerequisite
 
-- Platform: Ubuntu 16.04 // Debian 9
+- Platform: Ubuntu 14.04 // Debian 9
 - Cloud Provider: GCE
 - Ansible Version: 2.4.2.0
 - Spinnaker Version  1.6.2 and above
