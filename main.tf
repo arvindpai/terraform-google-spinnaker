@@ -1,6 +1,3 @@
-provider "google" {
-  region = "${var.region}"
-}
 
 resource "random_id" "spinnaker_bucket_id" {
   byte_length = 6
