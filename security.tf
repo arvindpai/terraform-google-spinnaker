@@ -13,7 +13,7 @@
 # limitations under the License.
 
 resource "google_storage_bucket" "spinnaker" {
-  name          = "spinnaker-halyard-${random_id.spinnaker_bucket_id.hex}"
+  name          = "spinnaker-halyard-${var.project}"
   project       = "${var.project}"
   force_destroy = true
 
