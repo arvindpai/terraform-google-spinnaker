@@ -38,7 +38,7 @@ resource "google_compute_firewall" "allow_spinnaker_gate" {
     ports    = ["8084"]
   }
 
-  source_ranges = ["0.0.0.0/0"]
+  source_ranges = ["${var.protected_networks}"]
 }
 
 resource "google_compute_firewall" "allow_spinnaker_deck_ui" {

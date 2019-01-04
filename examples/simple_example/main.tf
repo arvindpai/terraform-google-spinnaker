@@ -18,8 +18,6 @@ provider "google" {
   credentials = "${file(var.credentials_path)}"
 }
 
-
-
 module "spinnaker" {
   source              = "../../"
   project             = "${var.project_id}"
@@ -35,4 +33,5 @@ module "spinnaker" {
   ansible_basedir     = "${var.ansible_basedir}"
   zone                = "us-central1-a"
   machine_type        = "n1-standard-4"
+  protected_networks  = ["0.0.0.0/0"]
 }

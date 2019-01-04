@@ -26,6 +26,10 @@ variable "network" {
   default = "default"
 }
 
+variable "protected_networks" {
+  type = "list"
+}
+
 variable "jenkins_master_name" {}
 variable "jenkins_username" {}
 variable "jenkins_password" {}
