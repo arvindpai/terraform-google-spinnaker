@@ -25,6 +25,6 @@ data "template_file" "startup_script_spinnaker" {
     jenkins_username     = "${var.jenkins_username}"
     jenkins_password     = "${var.jenkins_password}"
     spin_gcs_bucket_name = "${google_storage_bucket.spinnaker.name}"
-    spin_environment = "dev"
+    spin_environment     = "dev"
   }
 }

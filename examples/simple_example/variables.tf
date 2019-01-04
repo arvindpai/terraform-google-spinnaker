@@ -26,11 +26,11 @@ variable "network" {
   default = "default"
 }
 
-variable "region" { default = "us-central1"}
+variable "region" {
+  default = "us-central1"
+}
+
 variable "ansible_basedir" {}
 variable "environment" {}
 variable "dns_zone" {}
 variable "dns_suffix" {}
-
-
-

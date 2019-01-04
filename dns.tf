@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 resource "google_dns_record_set" "spinnaker_deck_ui_dns" {
   managed_zone = "${var.dns_zone}"
   name         = "spin-fe.${var.basename}.${var.dns_suffix}."

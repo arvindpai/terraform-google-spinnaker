@@ -57,5 +57,3 @@ resource "google_project_iam_member" "spinnaker_project_owner" {
   role    = "roles/owner"
   project = "${var.project}"
 }
-
-

@@ -17,6 +17,7 @@
 output "spinnaker-vm-name" {
   value = "${module.spinnaker.spinnaker_instance_name}"
 }
+
 //
 //output "forseti-client-vm-ip" {
 //  value = "${module.forseti-install-simple.forseti-client-vm-ip}"

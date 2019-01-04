@@ -29,6 +29,6 @@ module "spinnaker" {
   jenkins_port        = "9090"
   jenkins_master_name = "spin-jenkins"
   jenkins_password    = "xxxxxxx"
-  basename = "${var.environment}"
-  ansible_basedir = "${var.ansible_basedir}"
+  basename            = "${var.environment}"
+  ansible_basedir     = "${var.ansible_basedir}"
 }

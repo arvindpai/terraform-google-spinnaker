@@ -13,8 +13,8 @@
 # limitations under the License.
 
 resource "google_storage_bucket" "spinnaker" {
-  name    = "spinnaker-halyard-${random_id.spinnaker_bucket_id.hex}"
-  project = "${var.project}"
+  name          = "spinnaker-halyard-${random_id.spinnaker_bucket_id.hex}"
+  project       = "${var.project}"
   force_destroy = true
 
   versioning {
@@ -23,8 +23,8 @@ resource "google_storage_bucket" "spinnaker" {
 }
 
 resource "google_storage_bucket_object" "spinnaker-key" {
-  bucket = "${google_storage_bucket.spinnaker.name}"
-  name = "spinnaker_gcs.json"
+  bucket  = "${google_storage_bucket.spinnaker.name}"
+  name    = "spinnaker_gcs.json"
   content = "${base64decode(google_service_account_key.spinnaker_sa_key.private_key)}"
 }
 
