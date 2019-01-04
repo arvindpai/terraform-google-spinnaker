@@ -29,7 +29,7 @@ if [ -z "$(grep $MY_DOMAIN /etc/hosts)" ] ; then
   # We need to make sure that /etc/hosts is consistent, else IDM deployment will fail
   IP=$(hostname -I |awk {'print $1'})
   sed -i 's|'"$IP .*internal"'|'"$IP $MY_HOSTNAME "'|' /etc/hosts
-  # Note, the internal. in the regex above is not from internal.unity3d.com; but the bizarre internal GCP default domain.
+  # Note, the internal. is the internal internal GCP default domain.
 fi
 rm -f /etc/dhcp/dhclient-exit-hooks.d/google_set_hostname
 
@@ -56,21 +56,20 @@ spinnaker_deck_url: "${spin_deck_url}"
 spinnaker_api_url: "${spin_api_url}"
 spinnaker_environment: "${spin_environment}"
 
-front50_service_account_name: "spinnaker-test"
+#front50_service_account_name: "spinnaker-test"
 #Group name in gsuite. if defined more than one,
 #user who can list this spinnaker service account must belong to all groups defined
-front50_service_account_member: '["spinnaker"]'
-spinnaker_oauth_client_id: "oauth_client_id"
-spinnaker_oauth_client_secret: "oauth_client_secret"
-spinnaker_oauth_provider: "google"
-spinnaker_gsuite_admin_username: "admin@testspinnaker.com"
-spinnaker_gsuite_domain: "testspinnaker.com"
-spinnaker_slack_bot_name: "slackbot"
-spinnaker_slack_token: "xxxxxxxxxxxxxxxxx"
+#front50_service_account_member: '["spinnaker"]'
+#spinnaker_oauth_client_id: "oauth_client_id"
+#spinnaker_oauth_client_secret: "oauth_client_secret"
+#spinnaker_oauth_provider: "google"
+#spinnaker_gsuite_admin_username: "admin@testspinnaker.com"
+#spinnaker_gsuite_domain: "testspinnaker.com"
+#spinnaker_slack_bot_name: "slackbot"
+#spinnaker_slack_token: "xxxxxxxxxxxxxxxxx"
 
 
 jenkins_master_name: "${jenkins_master_name}"
-#jenkins_base_url: "http://spin-jenkins.gcloud.rootleveltech.com:9090"
 jenkins_base_url: "${jenkins_master_url}"
 jenkins_username: "${jenkins_username}"
 jenkins_user_password: "${jenkins_password}"

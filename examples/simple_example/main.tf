@@ -18,6 +18,8 @@ provider "google" {
   credentials = "${file(var.credentials_path)}"
 }
 
+
+
 module "spinnaker" {
   source              = "../../"
   project             = "${var.project_id}"

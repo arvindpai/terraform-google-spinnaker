@@ -49,3 +49,7 @@ output "spinnaker_deck_allow_port" {
 output "spinnaker_service_account_key" {
   value = "${google_storage_bucket_object.spinnaker-key.name}"
 }
+
+output "spinnaker_instance_zone" {
+  value = "${google_compute_instance.spinnaker.zone}"
+}

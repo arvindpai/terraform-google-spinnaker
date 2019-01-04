@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
-output "spinnaker-vm-name" {
+output "spinnaker_vm_name" {
   value = "${module.spinnaker.spinnaker_instance_name}"
+}
+
+output "spinnaker_vm_zone" {
+  value = "${module.spinnaker.spinnaker_instance_zone}"
 }
 
 //
