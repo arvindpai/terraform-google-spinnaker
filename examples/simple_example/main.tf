@@ -31,4 +31,6 @@ module "spinnaker" {
   jenkins_password    = "xxxxxxx"
   basename            = "${var.environment}"
   ansible_basedir     = "${var.ansible_basedir}"
+  zone                = "us-central1-a"
+  machine_type        = "n1-standard-4"
 }

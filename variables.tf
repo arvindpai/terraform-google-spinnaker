@@ -13,12 +13,14 @@
 # limitations under the License.
 
 variable "project" {}
+variable "machine_type" {}
 
 variable "dns_zone" {}
 
 variable "dns_suffix" {}
 
 variable "region" {}
+variable "zone" {}
 
 variable "network" {
   default = "default"

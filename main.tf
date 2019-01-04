@@ -12,8 +12,8 @@ resource "null_resource" "ansible_sync" {
 
 resource "google_compute_instance" "spinnaker" {
   name                    = "spkr-gce-${var.basename}"
-  machine_type            = "n1-standard-1"
-  zone                    = "us-central1-a"
+  machine_type            = "${var.machine_type}"
+  zone                    = "${var.zone}"
   project                 = "${var.project}"
   metadata_startup_script = "${data.template_file.startup_script_spinnaker.rendered}"
 
@@ -34,7 +34,6 @@ resource "google_compute_instance" "spinnaker" {
   }
 
   service_account {
-    //email = ""
     scopes = ["userinfo-email", "compute-ro", "storage-rw"]
   }
 }
