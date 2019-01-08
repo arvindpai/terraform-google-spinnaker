@@ -18,7 +18,7 @@
 title 'Spinnaker Terraform GCP Test Suite'
 
 gcp_project_id = attribute('gcp_project_id')
-#gcp_org_id = attribute('gcp_org_id')
+
 
 control 'spinnaker-vm' do
   impact 1.0
