@@ -17,6 +17,8 @@
 
 
 set -x
+
+# Setup explicit logging for the installation / startup script so it can be referenced later.
 exec > >(tee /var/log/start-script.log|logger -t user-data -s 2>/dev/console) 2>&1
 
 # All the hostname corrections. The first thing that should happen.
