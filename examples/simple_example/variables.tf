@@ -19,7 +19,7 @@ variable "credentials_path" {
 }
 
 variable "project_id" {
-  description = "The ID of an existing Google project where Forseti will be installed"
+  description = "The ID of an existing Google project where Spinnaker will be installed"
 }
 
 variable "network" {

@@ -1,4 +1,4 @@
-# Forseti Infrastructure Tests
+# Spinnaker Infrastructure Tests
 
 ## Working with the testing framework
 

@@ -14,47 +14,28 @@
  * limitations under the License.
  */
 
-output "spinnaker_vm_name" {
-  value = "${module.spinnaker.spinnaker_instance_name}"
-}
 
 output "spinnaker_vm_zone" {
+  description = "GCP Availability Zone"
   value = "${module.spinnaker.spinnaker_instance_zone}"
 }
 
-//
-//output "forseti-client-vm-ip" {
-//  value = "${module.forseti-install-simple.forseti-client-vm-ip}"
-//}
-//
-//output "forseti-client-service-account" {
-//  value = "${module.forseti-install-simple.foseti-client-service-account}"
-//}
-//
-//output "forseti-server-vm-name" {
-//  value = "${module.forseti-install-simple.forseti-server-vm-name}"
-//}
-//
-//output "forseti-server-vm-ip" {
-//  value = "${module.forseti-install-simple.forseti-server-vm-ip}"
-//}
-//
-//output "forseti-server-service-account" {
-//  value = "${module.forseti-install-simple.foseti-server-service-account}"
-//}
-
 output "spinnaker_instance_name" {
+  description = "Spinnaker GCE Instance Name"
   value = "${module.spinnaker.spinnaker_instance_name}"
 }
 
 output "spinnaker_deck_url" {
+  description = "Spinnker Frontend URL"
   value = "${module.spinnaker.spinnaker_deck_url}"
 }
 
 output "spinnaker_gate_url" {
+  description = "Spinnaker Gate API URL"
   value = "${module.spinnaker.spinnaker_gate_url}"
 }
 
 output "spinnaker_halyard_bucket" {
+  description = "Halyard configuration GCS Bucket"
   value = "${module.spinnaker.halyard_config_gcs_bucket}"
 }

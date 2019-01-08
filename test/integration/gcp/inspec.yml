@@ -13,12 +13,12 @@
 # limitations under the License.
 
 name: my-profile
-title: GCP Forseti InSpec Profile
+title: GCP Spinnaker InSpec Profile
 maintainer: Eric Fouarge
 copyright: Google LLC
-copyright_email: eric.fouarge@rootleveltech.com
+copyright_email: ericalan@google.com
 license: Apache-2.0
-summary: An InSpec Compliance Profile For Forseti in GCP
+summary: An InSpec Compliance Profile For Spinnaker in GCP
 version: 0.1.0
 inspec_version: '>= 2.3.5'
 attributes:
