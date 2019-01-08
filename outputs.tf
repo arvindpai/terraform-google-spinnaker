@@ -23,33 +23,41 @@ output "spinnaker_gate_url" {
 }
 
 output "halyard_config_gcs_bucket" {
+  description = "GCS Bucket where Halyard Configs and Persistent storage is defined"
   value = "${google_storage_bucket.spinnaker.name}"
 }
 
 output "spinnaker_instance_ip" {
+  description = "GCE Instance IP Address for Spinnaker"
   value = "${google_compute_instance.spinnaker.network_interface.0.access_config.0.assigned_nat_ip}"
 }
 
 output "spinnaker_service_account" {
+  description = "Spinnaker Service account that is used to create GCP resources"
   value = "${google_service_account.spinnaker.email}"
 }
 
 output "spinnaker_instance_name" {
+  description = "Spinnaker GCE Instance name"
   value = "${google_compute_instance.spinnaker.name}"
 }
 
 output "spinnaker_gate_allow_port" {
+  description = "Spinnaker Gate API TCP Port"
   value = "${google_compute_firewall.allow_spinnaker_gate.allow.ports}"
 }
 
 output "spinnaker_deck_allow_port" {
+  description = "Spinnaker Deck UI TCP Port"
   value = "${google_compute_firewall.allow_spinnaker_deck_ui.allow.ports}"
 }
 
 output "spinnaker_service_account_key" {
+  description = "Spinnaker service account key"
   value = "${google_storage_bucket_object.spinnaker-key.name}"
 }
 
 output "spinnaker_instance_zone" {
+  description = "Spinnaker instance zone"
   value = "${google_compute_instance.spinnaker.zone}"
 }

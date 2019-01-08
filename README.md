@@ -32,32 +32,36 @@ module "spinnaker" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| ansible\_basedir | Required for Ansible configuration | string | - | yes |
+| ansible\_basedir | This is the location of the ansible playbook on the local disk for the null resource to copy to the GCS bucket | string | - | yes |
 | basename | rip this out | string | - | yes |
-| dns\_suffix | - | string | - | yes |
-| dns\_zone | - | string | - | yes |
-| jenkins\_master\_name | - | string | - | yes |
-| jenkins\_password | - | string | - | yes |
-| jenkins\_port | - | string | - | yes |
-| jenkins\_username | - | string | - | yes |
+| dns\_suffix | The DNS suffix to create the actual records | string | - | yes |
+| dns\_zone | DNS Zone that will be used to create the Spinnaker service entries | string | - | yes |
+| jenkins\_master\_name | Spinnaker resource name for the Jenkins Server you want to register | string | - | yes |
+| jenkins\_password | Jenkins password for the username defined in the jenkins_username | string | - | yes |
+| jenkins\_port | TCP port that Jenkins is running on | string | - | yes |
+| jenkins\_username | Jenkins username to connect to the instance that you defined above | string | - | yes |
+| machine\_type | GCE Instance size that the spinnaker instance(s) will be provisioned with. | string | - | yes |
 | network | - | string | `default` | no |
-| project | - | string | - | yes |
-| region | - | string | - | yes |
+| project | GCP Project that Spinnaker will be deployed within | string | - | yes |
+| protected\_networks | The network CIDRs that will have access to Spinnaker | list | - | yes |
+| region | GCP Region that resources will be deployed into | string | - | yes |
+| zone | GCP Availability Zones that the instnaces will be deployed within | string | - | yes |
 
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| halyard\_config\_gcs\_bucket | - |
-| spinnaker\_deck\_allow\_port | - |
+| halyard\_config\_gcs\_bucket | GCS Bucket where Halyard Configs and Persistent storage is defined |
+| spinnaker\_deck\_allow\_port | Spinnaker Deck UI TCP Port |
 | spinnaker\_deck\_url | - |
-| spinnaker\_gate\_allow\_port | - |
+| spinnaker\_gate\_allow\_port | Spinnaker Gate API TCP Port |
 | spinnaker\_gate\_url | - |
-| spinnaker\_instance\_ip | - |
-| spinnaker\_instance\_name | - |
-| spinnaker\_service\_account | - |
-| spinnaker\_service\_account\_key | - |
+| spinnaker\_instance\_ip | GCE Instance IP Address for Spinnaker |
+| spinnaker\_instance\_name | Spinnaker GCE Instance name |
+| spinnaker\_instance\_zone | Spinnaker instance zone |
+| spinnaker\_service\_account | Spinnaker Service account that is used to create GCP resources |
+| spinnaker\_service\_account\_key | Spinnaker service account key |
 
 
 # Validating the Spinnaker Installation
