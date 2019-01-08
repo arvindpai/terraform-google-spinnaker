@@ -83,7 +83,7 @@ EOF
 mkdir -p /tmp/roles
 
 gsutil cp -R gs://${spin_gcs_bucket_name}/spinnaker-halyard /tmp/roles/
-gsutil  cp -R gs://${spin_gcs_bucket_name}/spinnaker_gcs.json /tmp/spinnaker_gcs.json
+gsutil cp -R gs://${spin_gcs_bucket_name}/spinnaker_gcs.json /tmp/spinnaker_gcs.json
 mkdir -p /tmp/roles/spinnaker-halyard/defaults
 cp /tmp/spinnaker_defaults.yml /tmp/roles/spinnaker-halyard/defaults/main.yml
 
