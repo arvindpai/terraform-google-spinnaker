@@ -23,7 +23,7 @@ gcp_project_id: 'my-gcp-project'
 
 From the root of the module directory execute the following commands:
 
-```aidl
+```
 # Initialize the terraform providers and context
 kitchen setup
 
