@@ -52,9 +52,9 @@ output "spinnaker_deck_allow_port" {
   value = "${google_compute_firewall.allow_spinnaker_deck_ui.allow.ports}"
 }
 
-output "spinnaker_service_account_key" {
+output "spinnaker_service_account_key_name" {
   description = "Spinnaker service account key"
-  value = "${google_storage_bucket_object.spinnaker-key.name}"
+  value = "${google_storage_bucket_object.spinnaker_key.name}"
 }
 
 output "spinnaker_instance_zone" {

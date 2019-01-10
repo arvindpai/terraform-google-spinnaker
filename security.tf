@@ -22,7 +22,7 @@ resource "google_storage_bucket" "spinnaker" {
   }
 }
 
-resource "google_storage_bucket_object" "spinnaker-key" {
+resource "google_storage_bucket_object" "spinnaker_key" {
   bucket  = "${google_storage_bucket.spinnaker.name}"
   name    = "spinnaker_gcs.json"
   content = "${base64decode(google_service_account_key.spinnaker_sa_key.private_key)}"
