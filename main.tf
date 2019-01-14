@@ -19,7 +19,6 @@ resource "google_compute_instance" "spinnaker" {
 
   boot_disk {
     initialize_params {
-
       image = "ubuntu-1404-trusty-v20181114"
       size  = "60"
     }

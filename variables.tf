@@ -15,6 +15,7 @@
 variable "project" {
   description = "GCP Project that Spinnaker will be deployed within"
 }
+
 variable "machine_type" {
   description = "GCE Instance size that the spinnaker instance(s) will be provisioned with."
 }
@@ -30,29 +31,33 @@ variable "dns_suffix" {
 variable "region" {
   description = "GCP Region that resources will be deployed into"
 }
+
 variable "zone" {
   description = "GCP Availability Zones that the instnaces will be deployed within"
 }
 
 variable "network" {
   description = ""
-  default = "default"
+  default     = "default"
 }
 
 variable "protected_networks" {
   description = "The network CIDRs that will have access to Spinnaker"
-  type = "list"
+  type        = "list"
 }
 
 variable "jenkins_master_name" {
   description = "Spinnaker resource name for the Jenkins Server you want to register"
 }
+
 variable "jenkins_username" {
   description = "Jenkins username to connect to the instance that you defined above"
 }
+
 variable "jenkins_password" {
   description = "Jenkins password for the username defined in the jenkins_username"
 }
+
 variable "jenkins_port" {
   description = "TCP port that Jenkins is running on"
 }
