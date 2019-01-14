@@ -17,22 +17,22 @@
 
 output "spinnaker_vm_zone" {
   description = "GCP Availability Zone"
-  value = "${module.spinnaker.spinnaker_instance_zone}"
+  value = "${module.spinnaker.instance_zone}"
 }
 
 output "spinnaker_instance_name" {
   description = "Spinnaker GCE Instance Name"
-  value = "${module.spinnaker.spinnaker_instance_name}"
+  value = "${module.spinnaker.instance_name}"
 }
 
 output "spinnaker_deck_url" {
   description = "Spinnker Frontend URL"
-  value = "${module.spinnaker.spinnaker_deck_url}"
+  value = "${module.spinnaker.deck_url}"
 }
 
 output "spinnaker_gate_url" {
   description = "Spinnaker Gate API URL"
-  value = "${module.spinnaker.spinnaker_gate_url}"
+  value = "${module.spinnaker.gate_url}"
 }
 
 output "spinnaker_halyard_bucket" {

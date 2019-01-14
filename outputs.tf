@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-output "spinnaker_deck_url" {
+output "deck_url" {
   value = "http://${replace(google_dns_record_set.spinnaker_deck_ui_dns.name, "${var.dns_suffix}.", "${var.dns_suffix}")}:9000"
 }
 
-output "spinnaker_gate_url" {
+output "gate_url" {
   value = "http://${replace(google_dns_record_set.spinnaker_gate_dns.name, "${var.dns_suffix}.", "${var.dns_suffix}")}:8084"
 }
 
@@ -27,37 +27,37 @@ output "halyard_config_gcs_bucket" {
   value = "${google_storage_bucket.spinnaker.name}"
 }
 
-output "spinnaker_instance_ip" {
+output "instance_ip" {
   description = "GCE Instance IP Address for Spinnaker"
   value = "${google_compute_instance.spinnaker.network_interface.0.access_config.0.assigned_nat_ip}"
 }
 
-output "spinnaker_service_account" {
+output "service_account" {
   description = "Spinnaker Service account that is used to create GCP resources"
   value = "${google_service_account.spinnaker.email}"
 }
 
-output "spinnaker_instance_name" {
+output "instance_name" {
   description = "Spinnaker GCE Instance name"
   value = "${google_compute_instance.spinnaker.name}"
 }
 
-output "spinnaker_gate_allow_port" {
+output "gate_allow_port" {
   description = "Spinnaker Gate API TCP Port"
   value = "${google_compute_firewall.allow_spinnaker_gate.allow.ports}"
 }
 
-output "spinnaker_deck_allow_port" {
+output "deck_allow_port" {
   description = "Spinnaker Deck UI TCP Port"
   value = "${google_compute_firewall.allow_spinnaker_deck_ui.allow.ports}"
 }
 
-output "spinnaker_service_account_key_name" {
+output "service_account_key_name" {
   description = "Spinnaker service account key"
   value = "${google_storage_bucket_object.spinnaker_key.name}"
 }
 
-output "spinnaker_instance_zone" {
+output "instance_zone" {
   description = "Spinnaker instance zone"
   value = "${google_compute_instance.spinnaker.zone}"
 }
