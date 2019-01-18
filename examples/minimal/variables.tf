@@ -14,23 +14,35 @@
  * limitations under the License.
  */
 
-variable "credentials_path" {
-  description = "Path to service account json"
+variable "ansible_basedir" {
+  description = ""
+  default     = ""
 }
 
-variable "project_id" {
-  description = "The ID of an existing Google project where Spinnaker will be installed"
+variable "zone_dns_name" {
+  description = ""
+  default     = "example.com."
 }
 
-variable "network" {
-  default = "default"
+variable "zone_name" {
+  description = ""
+  default     = "example-com-zone"
+}
+
+variable "labels" {
+  description = "description"
+  default     = {}
+}
+
+variable "project" {
+  description = "description"
 }
 
 variable "region" {
-  default = "us-central1"
+  description = ""
 }
 
-variable "ansible_basedir" {}
-variable "environment" {}
-variable "dns_zone" {}
-variable "dns_suffix" {}
+variable "service_account_email" {
+  description = "description"
+  default     = ""
+}

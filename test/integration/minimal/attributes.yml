@@ -12,22 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: my-profile
-title: GCP Spinnaker InSpec Profile
-maintainer: Eric Fouarge
-copyright: Google LLC
-copyright_email: ericalan@google.com
-license: Apache-2.0
-summary: An InSpec Compliance Profile For Spinnaker in GCP
-version: 0.1.0
-inspec_version: '>= 2.3.5'
-attributes:
-- name: gcp_project_id
-  required: true
-  description: 'The GCP project identifier.'
-  type: string
-depends:
-- name: inspec-gcp
-  url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
-supports:
-- platform: gcp

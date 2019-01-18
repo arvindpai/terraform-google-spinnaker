@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ruby '2.4.2'
-
 source 'https://rubygems.org/' do
-  gem 'kitchen-terraform', '~> 4.0.3'
+  gem 'kitchen-terraform', '~> 4.2'
 end

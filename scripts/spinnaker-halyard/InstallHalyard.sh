@@ -1,12 +1,11 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 # Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     https://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,20 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 set -e
 
 function check_migration_needed() {
   set +e
 
-  which dpkg &> /dev/null
+  which dpkg &>/dev/null
   if [ "$?" = "0" ]; then
-    dpkg -s spinnaker-halyard &> /dev/null
+    dpkg -s spinnaker-halyard &>/dev/null
 
     if [ "$?" != "1" ]; then
-      >&2 echo "Attempting to install halyard while a debian installation is present."
-      >&2 echo "Please visit: http://spinnaker.io/setup/install/halyard_migration"
+      echo >&2 "Attempting to install halyard while a debian installation is present."
+      echo >&2 "Please visit: http://spinnaker.io/setup/install/halyard_migration"
       exit 1
     fi
   fi
@@ -35,61 +32,61 @@ function check_migration_needed() {
 }
 
 function process_args() {
-  while [ "$#" -gt "0" ]
-  do
+  while [ "$#" -gt "0" ]; do
     local key="$1"
     shift
     case $key in
-      --halyard-bucket-base-url)
-        echo "halyard-bucket-base-url"
-        HALYARD_BUCKET_BASE_URL="$1"
-        shift
-        ;;
-      --download-with-gsutil)
-        echo "download-with-gsutil"
-        DOWNLOAD_WITH_GSUTIL=true
-        ;;
-      --spinnaker-repository)
-        echo "spinnaker-repo"
-        SPINNAKER_REPOSITORY_URL="$1"
-        shift
-        ;;
-      --spinnaker-registry)
-        echo "spinnaker-registry"
-        SPINNAKER_DOCKER_REGISTRY="$1"
-        shift
-        ;;
-      --spinnaker-gce-project)
-        echo "spinnaker-gce-project"
-        SPINNAKER_GCE_PROJECT="$1"
-        shift
-        ;;
-      --config-bucket)
-        echo "config-bucket"
-        CONFIG_BUCKET="$1"
-        shift
-        ;;
-      --user)
-        echo "user"
-        HAL_USER="$1"
-        shift
-        ;;
-      --version)
-        echo "version"
-        HALYARD_VERSION="$1"
-        shift
-        ;;
-      -y)
-        echo "non-interactive"
-        YES=true
-        ;;
-      --help|-help|-h)
-        print_usage
-        exit 13
-        ;;
-      *)
-        echo "ERROR: Unknown argument '$key'"
-        exit -1
+    --halyard-bucket-base-url)
+      echo "halyard-bucket-base-url"
+      HALYARD_BUCKET_BASE_URL="$1"
+      shift
+      ;;
+    --download-with-gsutil)
+      echo "download-with-gsutil"
+      DOWNLOAD_WITH_GSUTIL=true
+      ;;
+    --spinnaker-repository)
+      echo "spinnaker-repo"
+      SPINNAKER_REPOSITORY_URL="$1"
+      shift
+      ;;
+    --spinnaker-registry)
+      echo "spinnaker-registry"
+      SPINNAKER_DOCKER_REGISTRY="$1"
+      shift
+      ;;
+    --spinnaker-gce-project)
+      echo "spinnaker-gce-project"
+      SPINNAKER_GCE_PROJECT="$1"
+      shift
+      ;;
+    --config-bucket)
+      echo "config-bucket"
+      CONFIG_BUCKET="$1"
+      shift
+      ;;
+    --user)
+      echo "user"
+      HAL_USER="$1"
+      shift
+      ;;
+    --version)
+      echo "version"
+      HALYARD_VERSION="$1"
+      shift
+      ;;
+    -y)
+      echo "non-interactive"
+      YES=true
+      ;;
+    --help | -help | -h)
+      print_usage
+      exit 13
+      ;;
+    *)
+      echo "ERROR: Unknown argument '$key'"
+      exit -1
+      ;;
     esac
   done
 }
@@ -117,21 +114,21 @@ function configure_defaults() {
   fi
 
   if [ -z "$HAL_USER" ]; then
-    >&2 echo "You have not supplied a user to run Halyard as."
+    echo >&2 "You have not supplied a user to run Halyard as."
     exit 1
   fi
 
   if [ "$HAL_USER" = "root" ]; then
-    >&2 echo "Halyard may not be run as root. Supply a user to run Halyard as: "
-    >&2 echo "  sudo bash $0 --user <user>"
+    echo >&2 "Halyard may not be run as root. Supply a user to run Halyard as: "
+    echo >&2 "  sudo bash $0 --user <user>"
     exit 1
   fi
 
   set +e
-  getent passwd $HAL_USER &> /dev/null
+  getent passwd $HAL_USER &>/dev/null
 
   if [ "$?" != "0" ]; then
-    >&2 echo "Supplied user $HAL_USER does not exist"
+    echo >&2 "Supplied user $HAL_USER does not exist"
     exit 1
   fi
   set -e
@@ -165,7 +162,7 @@ function configure_defaults() {
   mkdir -p /opt/spinnaker/config
   chmod a+rx /opt/spinnaker/config
 
-  cat > /opt/spinnaker/config/halyard.yml <<EOL
+  cat >/opt/spinnaker/config/halyard.yml <<EOL
 halyard:
   halconfig:
     directory: $halconfig_dir
@@ -180,9 +177,9 @@ spinnaker:
       bucket: $CONFIG_BUCKET
 EOL
 
-  echo $HAL_USER > /opt/spinnaker/config/halyard-user
+  echo $HAL_USER >/opt/spinnaker/config/halyard-user
 
-  cat > $halconfig_dir/uninstall.sh <<EOL
+  cat >$halconfig_dir/uninstall.sh <<EOL
 #!/usr/bin/env bash
 
 if [[ \`/usr/bin/id -u\` -ne 0 ]]; then
@@ -210,7 +207,6 @@ EOL
   echo "$(tput bold)Uninstall script is located at $halconfig_dir/uninstall.sh$(tput sgr0)"
 }
 
-
 function print_usage() {
   cat <<EOF
 usage: $0 [-y] [--version=<version>] [--user=<user>]
@@ -221,8 +217,8 @@ usage: $0 [-y] [--version=<version>] [--user=<user>]
                                     is stored in.
 
     --download-with-gsutil          If specifying a GCS bucket using
-                                    --halyard-bucket, this flag causes the 
-                                    install script to rely on gsutil and its 
+                                    --halyard-bucket, this flag causes the
+                                    install script to rely on gsutil and its
                                     authentication to fetch the Halyard JAR.
 
     --config-bucket <name>          The bucket the your Bill of Materials and
@@ -250,16 +246,16 @@ EOF
 
 function install_java() {
   set +e
-  local java_version=$(java -version 2>&1 head -1)
+  local java_version=$(java -version head -1 2>&1)
   set -e
 
   if [[ "$java_version" == *1.8* ]]; then
     echo "Java is already installed & at the right version"
-    return 0;
+    return 0
   fi
 
   if [ ! -f /etc/os-release ]; then
-    >&2 "Unable to determine OS platform (no /etc/os-release file)"
+    "Unable to determine OS platform (no /etc/os-release file)" >&2
     exit 1
   fi
 
@@ -270,7 +266,7 @@ function install_java() {
     # Java 8
     # https://launchpad.net/~openjdk-r/+archive/ubuntu/ppa
     add-apt-repository -y ppa:openjdk-r/ppa
-    apt-get update ||:
+    apt-get update || :
 
     apt-get install -y --force-yes openjdk-8-jre
 
@@ -288,8 +284,8 @@ function install_java() {
     echo "Running debian 9 (stretch)"
     apt install -y -t stretch-backports openjdk-8-jre-headless ca-certificates-java
   else
-    >&2 echo "Distribution $PRETTY_NAME is not supported yet - please file an issue"
-    >&2 echo "  https://github.com/spinnaker/halyard/issues"
+    echo >&2 "Distribution $PRETTY_NAME is not supported yet - please file an issue"
+    echo >&2 "  https://github.com/spinnaker/halyard/issues"
     exit 1
   fi
 }
@@ -308,7 +304,7 @@ function configure_bash_completion() {
     completion_script="/etc/bash_completion.d/hal"
 
     mkdir -p $(dirname $completion_script)
-    hal --print-bash-completion | tee $completion_script  > /dev/null
+    hal --print-bash-completion | tee $completion_script >/dev/null
 
     local bashrc
     if [ -z "$YES" ]; then
@@ -321,8 +317,8 @@ function configure_bash_completion() {
     fi
 
     if [ -z "$(grep $completion_script $bashrc)" ]; then
-      echo "# configure hal auto-complete " >> $bashrc
-      echo ". /etc/bash_completion.d/hal" >> $bashrc
+      echo "# configure hal auto-complete " >>$bashrc
+      echo ". /etc/bash_completion.d/hal" >>$bashrc
     fi
 
     echo "Bash auto-completion configured."
@@ -337,8 +333,8 @@ function install_halyard() {
   local gcs_bucket_and_file
 
   if [[ "$HALYARD_BUCKET_BASE_URL" != gs://* ]]; then
-    >&2 echo "Currently installing halyard is only supported from a GCS bucket."
-    >&2 echo "The --halyard-install-url parameter must start with 'gs://'."
+    echo >&2 "Currently installing halyard is only supported from a GCS bucket."
+    echo >&2 "The --halyard-install-url parameter must start with 'gs://'."
     exit 1
   else
     gcs_bucket_and_file=${HALYARD_BUCKET_BASE_URL:5}/$HALYARD_VERSION/debian/halyard.tar.gz

@@ -1,4 +1,5 @@
 # spinnaker-halyard
+
 Ansible role for installing and configuring Netflix's Spinnaker via Halyard on GCE
 
 #### Prerequisite
@@ -35,13 +36,11 @@ Ansible role for installing and configuring Netflix's Spinnaker via Halyard on G
 | spinnaker_gcs_bucket_name                | String: Spinnaker GCS bucket name used by Front50 |
 | spinnaker_service_account_filename       | String: Spinnaker Service account filename |
 
-
-
 #### Assumptions
 
 - Service account for configuring spinnaker is encrypted with KMS and is uploaded in GCS bucket in this case it is `gs://spinnaker-halyard` where *key-ring* used for KMS encryption is `spinnaker-halyard` and *key* is `spinnaker`. For more details refer [Cloud KMS](https://cloud.google.com/kms/docs/encrypt-decrypt)
-- Service account `spinnaker-halyard` is having **dwd** enabled as per [Spinnaker authorization Google Groups](https://www.spinnaker.io/setup/security/authorization/google-groups/)
-- Service account `spinnaker-halyard` having following IAM role assigned 
+- Service account `spinnaker-halyard` is having **dwd** enabled as per [Spinnaker authorization Google Groups](https://www.main.io/setup/security/authorization/google-groups/)
+- Service account `spinnaker-halyard` having following IAM role assigned
   - compute.instanceAdmin
   - compute.networkAdmin
   - compute.securityAdmin
@@ -56,4 +55,3 @@ This playbook is tested for basic setup of spinnaker with all the feature set en
 #### License
 
 MIT
-
